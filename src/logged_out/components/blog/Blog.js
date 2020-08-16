@@ -1,41 +1,41 @@
-import React, { useEffect } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import { Grid, Box, isWidthUp, withWidth, withStyles } from "@material-ui/core";
-import BlogCard from "./BlogCard";
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { Grid, Box, isWidthUp, withWidth, withStyles } from '@material-ui/core'
+import BlogCard from './BlogCard'
 
-const styles = theme => ({
+const styles = (theme) => ({
   blogContentWrapper: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(4),
-      marginRight: theme.spacing(4)
+      marginRight: theme.spacing(4),
     },
     maxWidth: 1280,
-    width: "100%"
+    width: '100%',
   },
   wrapper: {
-    minHeight: "60vh"
+    minHeight: '60vh',
   },
   noDecoration: {
-    textDecoration: "none !important"
-  }
-});
+    textDecoration: 'none !important',
+  },
+})
 
 function getVerticalBlogPosts(width, blogPosts) {
-  const gridRows = [[], [], []];
-  let rows;
-  let xs;
-  if (isWidthUp("md", width)) {
-    rows = 3;
-    xs = 4;
-  } else if (isWidthUp("sm", width)) {
-    rows = 2;
-    xs = 6;
+  const gridRows = [[], [], []]
+  let rows
+  let xs
+  if (isWidthUp('lg', width)) {
+    rows = 3
+    xs = 4
+  } else if (isWidthUp('md', width)) {
+    rows = 2
+    xs = 6
   } else {
-    rows = 1;
-    xs = 12;
+    rows = 1
+    xs = 12
   }
   blogPosts.forEach((blogPost, index) => {
     gridRows[index % rows].push(
@@ -50,27 +50,27 @@ function getVerticalBlogPosts(width, blogPosts) {
           />
         </Box>
       </Grid>
-    );
-  });
+    )
+  })
   return gridRows.map((element, index) => (
     <Grid key={index} item xs={xs}>
       {element}
     </Grid>
-  ));
+  ))
 }
 
 function Blog(props) {
-  const { classes, width, blogPosts, selectBlog } = props;
+  const { classes, width, blogPosts, selectBlog } = props
 
   useEffect(() => {
-    selectBlog();
-  }, [selectBlog]);
+    selectBlog()
+  }, [selectBlog])
 
   return (
     <Box
       display="flex"
       justifyContent="center"
-      className={classNames(classes.wrapper, "lg-p-top")}
+      className={classNames(classes.wrapper, 'lg-p-top')}
     >
       <div className={classes.blogContentWrapper}>
         <Grid container spacing={3}>
@@ -78,14 +78,14 @@ function Blog(props) {
         </Grid>
       </div>
     </Box>
-  );
+  )
 }
 
 Blog.propTypes = {
   selectBlog: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
-  blogposts: PropTypes.arrayOf(PropTypes.object)
-};
+  blogposts: PropTypes.arrayOf(PropTypes.object),
+}
 
-export default withWidth()(withStyles(styles, { withTheme: true })(Blog));
+export default withWidth()(withStyles(styles, { withTheme: true })(Blog))

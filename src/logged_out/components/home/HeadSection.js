@@ -122,12 +122,7 @@ function HeadSection(props) {
                   className={classNames('row', classes.bannerBox)}
                 >
                   <Grid item xs={12} md={5}>
-                    <Box
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="space-between"
-                      height="100%"
-                    >
+                    <Box display="flex" flexDirection="column" height="100%">
                       <Box mb={4}>
                         <Typography
                           variant={isWidthUp('lg', width) ? 'h3' : 'h4'}

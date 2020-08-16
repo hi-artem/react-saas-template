@@ -60,6 +60,11 @@ function NavBar(props) {
       name: 'Blog',
       icon: <BookIcon className="text-white" />,
     },
+    {
+      link: '/about',
+      name: 'About',
+      icon: <HowToRegIcon className="text-white" />,
+    },
   ]
   return (
     <div className={classes.root}>
@@ -131,7 +136,7 @@ function NavBar(props) {
       </AppBar>
       <NavigationDrawer
         menuItems={menuItems}
-        anchor="right"
+        anchor="left"
         open={mobileDrawerOpen}
         selectedItem={selectedTab}
         onClose={handleMobileDrawerClose}
